@@ -1,0 +1,31 @@
+<xs:schema version="1.0.0" attributeFormDefault="unqualified" elementFormDefault="qualified"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
+           vc:minVersion="1.1">
+<xs:element name="manifest" type="MainType"/>
+<xs:complexType name="MainType">
+	<xs:sequence>
+		<xs:element type="HeaderType" name="Header" minOccurs="1"/>
+		<xs:element type="DetailType" name="Detail" minOccurs="1" maxOccurs="unbounded"/>
+	</xs:sequence>
+</xs:complexType>
+<xs:complexType name="HeaderType">
+	<xs:sequence>
+		<xs:element type="xs:string" name="Npwp" minOccurs="1"/>
+        <xs:element type="nameType" name="NamaLjk" minOccurs="1"/>
+		<xs:element type="xs:decimal" name="JumlahFile" minOccurs="1"/>
+	</xs:sequence>
+</xs:complexType>
+<xs:complexType name="DetailType">
+	<xs:sequence>
+		<xs:element type="xs:string" name="NoSrPermintaan" minOccurs="1"/>
+		<xs:element type="xs:string" name="NamaFile" minOccurs="1"/>
+	</xs:sequence>
+</xs:complexType>
+<xs:simpleType name="nameType">
+   <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Za-z0-9\s]{1,}"/>
+      <xs:maxLength value="200" />
+   </xs:restriction>
+</xs:simpleType>
+</xs:schema>
